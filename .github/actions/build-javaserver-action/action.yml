@@ -15,8 +15,8 @@ jobs:
       - name: Check out my other private repo
         uses: actions/checkout@master
         with:
-          repository: "vantonini/${{ REPO_TO_BUILD }}"
-          ref: "${{ BRANCH_TO_BUILD }}"
+          repository: "vantonini/${{ INPUT_REPO_TO_BUILD }}"
+          ref: "${{ INPUT_BRANCH_TO_BUILD }}"
           token: "${{ secrets.my_pat }}"
       - name: build with maven and java 11
         uses: actions/setup-java@v3
