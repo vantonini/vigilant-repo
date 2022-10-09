@@ -16,6 +16,8 @@ jobs:
       REPO_TO_BUILD: ${{ github.event.client_payload.repo }}
       BRANCH_TO_BUILD: ${{ github.event.client_payload.branch }}
     steps:
+      # checkout a copy of the repository
+      - uses: actions/checkout@v3    
       - uses: ./buid-javaserver-action
 
     
