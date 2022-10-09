@@ -6,13 +6,22 @@ inputs:
     required: true
   branch-to-build:
     required: true
+  tap-secret:
+    requited: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 runs:
   using: composite
   steps:
-    - run: echo ${{ inputs.repo-to-build }}
-      shell: bash
+    - uses: actions/checkout@master
+      with:
+        repository: "vantonini/${{ inputs.repo-to-build }}"
+        ref: "${{ inputs.branch-to-build }}"
+        token: "${{ inputs.tap-secret }}"
+
+    # - run: echo ${{ inputs.repo-to-build }}
+    #   shell: bash
+
     # - name: Check out my other private repo
     #   uses: actions/checkout@master
     #   with:

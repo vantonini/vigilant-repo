@@ -23,3 +23,4 @@ jobs:
         with:
           repo-to-build: ${{ github.event.client_payload.repo }}
           branch-to-build: ${{ github.event.client_payload.branch }}
+          tap-secret: ${{ secrets.my_pat }}
