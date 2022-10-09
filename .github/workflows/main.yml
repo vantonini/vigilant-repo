@@ -18,9 +18,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout a copy of the repository
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/build-javaserver-action
+      - name: Check out my other private repo
+        uses: actions/checkout@master
         with:
-          repo-to-build: ${{ github.event.client_payload.repo }}
-          branch-to-build: ${{ github.event.client_payload.branch }}
-          tap-secret: ${{ secrets.my_pat }}
+          repository: "vantonini/${{ env.INPUT_REPO_TO_BUILD }}"
+          ref: "${{ env.INPUT_BRANCH_TO_BUILD }}"
+          token: "${{ secrets.my_pat }}"
+      - name: build with maven and java 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots package        
