@@ -19,7 +19,4 @@ jobs:
     steps:
       # checkout a copy of the repository
       - uses: actions/checkout@v3    
-      - uses: ./.github/actions/build-javaserver-action
-        with: 
-
-    
+      - uses: ./.github/actions/build-javaserver-action    
