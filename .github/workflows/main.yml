@@ -8,9 +8,9 @@ on:
   repository_dispatch:
     types: [on-demand-test]
 
-env:
-  REPO_TO_BUILD: ${{ github.event.client_payload.repo }}
-  BRANCH_TO_BUILD: ${{ github.event.client_payload.branch }}
+# env:
+#   REPO_TO_BUILD: ${{ github.event.client_payload.repo }}
+#   BRANCH_TO_BUILD: ${{ github.event.client_payload.branch }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,4 +19,7 @@ jobs:
     steps:
       # checkout a copy of the repository
       - uses: actions/checkout@v3    
-      - uses: ./.github/actions/build-javaserver-action    
+      - uses: ./.github/actions/build-javaserver-action
+        with:
+          REPO_TO_BUILD: ${{ github.event.client_payload.repo }}
+          BRANCH_TO_BUILD: ${{ github.event.client_payload.branch }}
