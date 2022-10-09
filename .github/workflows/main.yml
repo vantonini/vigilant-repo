@@ -10,10 +10,15 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  run_if_failure:
-    if: ${{ !github.event.client_payload.passed }}
+  build:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          MESSAGE: ${{ github.event.client_payload.message }}
-        run: echo $MESSAGE
+      - name: Check out my other private repo
+        uses: actions/checkout@master
+        env:
+          REPO_TO_BUILD: ${{ github.event.client_payload.repo }}
+          BRANCH_TO_BUILD: ${{ github.event.client_payload.branch }}
+        with:
+          repository: vantonini/${{ REPO_TO_BUILD }}
+          ref: ${{ BRANCH_TO_BUILD }}
+          token: ${{ secrets.my_pat }}
