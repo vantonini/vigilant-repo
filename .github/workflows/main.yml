@@ -17,4 +17,4 @@ jobs:
       - name: Run a one-line script
         env:
           MESSAGE: ${{ github.event.client_payload.message }}
-        run: echo Hello, world!
+        run: echo $MESSAGE
