@@ -11,7 +11,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: echo ${{ inputs }}
+    - run: echo ${{ inputs.repo-to-build }}
       shell: bash
     # - name: Check out my other private repo
     #   uses: actions/checkout@master
