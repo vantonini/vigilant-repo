@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout a copy of the repository
-      - uses: actions/checkout@v3    
+      - uses: actions/checkout@v3
       - uses: ./.github/actions/build-javaserver-action
         with:
           repo-to-build: ${{ github.event.client_payload.repo }}
