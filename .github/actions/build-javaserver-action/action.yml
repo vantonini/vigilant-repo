@@ -1,6 +1,11 @@
 # This is a basic workflow to help you get started with Actions
 
 name: Build JavaServerAction
+inputs:
+  REPO_TO_BUILD:
+    required: true
+  BRANCH_TO_BUILD:
+    required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
