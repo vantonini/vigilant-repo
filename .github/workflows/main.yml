@@ -18,6 +18,6 @@ jobs:
     steps:
       # checkout a copy of the repository
       - uses: actions/checkout@v3    
-      - uses: buid-javaserver-action
+      - uses: .github/actions/buid-javaserver-action
 
     
