@@ -10,8 +10,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  print_paylod_message:
+  run_if_failure:
+    if: ${{ !github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     steps:
       - env:
