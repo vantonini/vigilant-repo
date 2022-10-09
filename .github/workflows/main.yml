@@ -21,5 +21,5 @@ jobs:
       - uses: actions/checkout@v3    
       - uses: ./.github/actions/build-javaserver-action
         with:
-          repo_to_build: ${{ github.event.client_payload.repo }}
-          branch_to_build: ${{ github.event.client_payload.branch }}
+          repo-to-build: 'a'
+          branch-to-build: 'b'

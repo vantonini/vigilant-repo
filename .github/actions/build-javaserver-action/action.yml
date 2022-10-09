@@ -2,28 +2,28 @@
 
 name: Build JavaServerAction
 inputs:
-  REPO_TO_BUILD:
+  repo-to-build:
     required: true
-  BRANCH_TO_BUILD:
+  branch-to-build:
     required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  checkout-branch:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out my other private repo
-        uses: actions/checkout@master
-        with:
-          repository: "vantonini/${{ env.INPUT_REPO_TO_BUILD }}"
-          ref: "${{ env.INPUT_BRANCH_TO_BUILD }}"
-          token: "${{ secrets.my_pat }}"
-      - name: build with maven and java 11
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-      - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots package          
+runs:
+  steps:
+    - run: echo ${{ inputs }}
+      shell: bash
+    # - name: Check out my other private repo
+    #   uses: actions/checkout@master
+    #   with:
+    #     repository: "vantonini/${{ env.INPUT_REPO_TO_BUILD }}"
+    #     ref: "${{ env.INPUT_BRANCH_TO_BUILD }}"
+    #     token: "${{ secrets.my_pat }}"
+    # - name: build with maven and java 11
+    #   uses: actions/setup-java@v3
+    #   with:
+    #     java-version: '11'
+    #     distribution: 'adopt'
+    # - name: Build with Maven
+    #   run: mvn --batch-mode --update-snapshots package          
 
     
