@@ -14,7 +14,6 @@ jobs:
   print_paylod_message:
     runs-on: ubuntu-latest
     steps:
-      - name: Run a one-line script
-        env:
+      - env:
           MESSAGE: ${{ github.event.client_payload.message }}
         run: echo $MESSAGE
